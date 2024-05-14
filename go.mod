@@ -2,11 +2,11 @@ module github.com/conejoninja/badger2040
 
 go 1.22.1
 
-replace github.com/aykevl/board => ../tinygo/board
+replace github.com/aykevl/board => ../../../github.com/hybridgroup/board
 
-replace tinygo.org/x/drivers => ../tinygo/drivers
+replace tinygo.org/x/drivers => ../../../tinygo.org/x/drivers
 
-replace github.com/aykevl/tinygl => ../tinygo/tinygl
+replace github.com/aykevl/tinygl => ../../../github.com/hybridgroup/tinygl
 
 require (
 	github.com/aykevl/board v0.0.0-20240106144210-80ca76f77def
