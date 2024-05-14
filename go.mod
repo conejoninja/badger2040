@@ -2,11 +2,15 @@ module github.com/conejoninja/badger2040
 
 go 1.22.1
 
+replace github.com/aykevl/board => ../tinygo/board
+
+replace tinygo.org/x/drivers => ../tinygo/drivers
+
+replace github.com/aykevl/tinygl => ../tinygo/tinygl
+
 require (
 	github.com/aykevl/board v0.0.0-20240106144210-80ca76f77def
 	github.com/aykevl/tinygl v0.0.0-20240501120451-0a813d1db232
-	github.com/makeworld-the-better-one/dither/v2 v2.4.0
-	golang.org/toolchain v0.0.1-go1.9rc2.windows-amd64
 	tinygo.org/x/drivers v0.27.1-0.20240509133757-7dbca2a54349
 )
 
@@ -42,9 +46,3 @@ require (
 	honnef.co/go/js/dom v0.0.0-20210725211120-f030747120f2 // indirect
 	tinygo.org/x/tinygl-font v0.0.0-20240406210647-1cb0a1c67ca1 // indirect
 )
-
-replace tinygo.org/x/drivers => ../../../tinygo.org/x/drivers
-
-replace github.com/aykevl/board => ../../../github.com/hybridgroup/board
-
-replace github.com/aykevl/tinygl => ../../../github.com/hybridgroup/tinygl
