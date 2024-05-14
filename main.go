@@ -1,33 +1,35 @@
 package main
 
 import (
-	"machine"
+	"time"
+
 	"tinygo.org/x/drivers/pixel"
 
 	"github.com/aykevl/board"
 	"github.com/aykevl/tinygl"
-)
-
-var display board.Displayer[pixel.Monochrome]
-var screen *tinygl.Screen[pixel.Monochrome]
-var led machine.Pin
-var (
-	white = pixel.NewColor[pixel.Monochrome](0xff, 0xff, 0xff)
-	black = pixel.NewColor[pixel.Monochrome](0x00, 0x00, 0x00)
+	"github.com/aykevl/tinygl/style"
+	"github.com/aykevl/tinygl/style/mono"
 )
 
 func main() {
-	led = machine.LED
-	led.Configure(machine.PinConfig{Mode: machine.PinOutput})
+	run(board.Display.Configure())
+}
 
-	display = board.Display.Configure()
+func run[T pixel.Color](display board.Displayer[T]) {
+	time.Sleep(1 * time.Second)
+
 	width, height := display.Size()
+	scalePercent := board.Display.PPI() * 100 / 120
 
-	buf := pixel.NewImage[pixel.Monochrome](int(width), int(height)/4)
-	screen = tinygl.NewScreen[pixel.Monochrome](display, buf, board.Display.PPI())
+	// Initialize the screen.
+	buf := pixel.NewImage[T](int(width), int(height)/4)
+	screen := tinygl.NewScreen[T](display, buf, board.Display.PPI())
 
-	//canvas := gfx.NewCanvas(black, int(width), int(height))
-	//screen.SetChild(canvas)
+	theme := mono.New(style.NewScale(scalePercent), screen)
+	header := theme.NewText("Hello, TinyGL")
+	helloText := theme.NewText("Hi")
+	vBox := theme.NewVBox(header, helloText)
 
+	screen.SetChild(vBox)
 	screen.Update()
 }
