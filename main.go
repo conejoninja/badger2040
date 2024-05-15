@@ -32,18 +32,21 @@ func run[T pixel.Color](display board.Displayer[T]) {
 	)
 	theme := mono.New(style.NewScale(scalePercent), screen)
 	helloText := theme.NewText("Hi")
-	canvas := gfx.NewCanvas(black, 96, 96)
+	canvas := gfx.NewCanvas(black, 295, 128)
 
 	vBox := theme.NewVBox(helloText, canvas)
 
 	screen.SetChild(vBox)
 	screen.Update()
 
-	brickW := gfx.NewRect(white, 0, 0, 288, 10)
+	brickW := gfx.NewRect(white, 0, 0, 280, 10)
 	canvas.Add(brickW)
 
+	i := 0
 	for {
-		//brickW.Move(0, 0)
+		println("BEFORE", i)
+		brickW.Move(i, i+30)
+		println("AFTER", i)
 		helloText.SetText("Goodbye")
 		screen.Update()
 		display.Display()
@@ -52,5 +55,6 @@ func run[T pixel.Color](display board.Displayer[T]) {
 		screen.Update()
 		display.Display()
 		time.Sleep(500 * time.Millisecond)
+		i++
 	}
 }
