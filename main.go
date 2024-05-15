@@ -17,6 +17,7 @@ func main() {
 }
 
 func run[T pixel.Color](display board.Displayer[T]) {
+	board.Display.SetBrightness(board.Display.MaxBrightness())
 	time.Sleep(1 * time.Second)
 
 	width, height := display.Size()
