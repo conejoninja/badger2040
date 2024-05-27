@@ -1,61 +1,71 @@
 package main
 
 import (
+	"image/color"
+	"machine"
 	"time"
-
-	"tinygo.org/x/drivers/pixel"
-
-	"github.com/aykevl/board"
-	"github.com/aykevl/tinygl"
-	"github.com/aykevl/tinygl/gfx"
-	"github.com/aykevl/tinygl/style"
-	"github.com/aykevl/tinygl/style/mono"
+	"tinygo.org/x/drivers/uc8151"
 )
 
+var display uc8151.Device
+var btnA, btnB, btnC, btnUp, btnDown machine.Pin
+
+var black = color.RGBA{1, 1, 1, 255}
+var white = color.RGBA{0, 0, 0, 255}
+
+const WIDTH = 296
+const HEIGHT = 128
+
 func main() {
-	run(board.Display.Configure())
-}
+	led3v3 := machine.ENABLE_3V3
+	led3v3.Configure(machine.PinConfig{Mode: machine.PinOutput})
+	led3v3.High()
 
-func run[T pixel.Color](display board.Displayer[T]) {
-	board.Display.SetBrightness(board.Display.MaxBrightness())
-	time.Sleep(1 * time.Second)
+	machine.SPI0.Configure(machine.SPIConfig{
+		Frequency: 12000000,
+		SCK:       machine.EPD_SCK_PIN,
+		SDO:       machine.EPD_SDO_PIN,
+	})
 
-	width, height := display.Size()
-	scalePercent := board.Display.PPI() * 100 / 120
+	display = uc8151.New(machine.SPI0, machine.EPD_CS_PIN, machine.EPD_DC_PIN, machine.EPD_RESET_PIN, machine.EPD_BUSY_PIN)
+	display.Configure(uc8151.Config{
+		Rotation: uc8151.ROTATION_270,
+		Speed:    uc8151.MEDIUM,
+		Blocking: true,
+	})
 
-	// Initialize the screen.
-	buf := pixel.NewImage[T](int(width), int(height)/4)
-	screen := tinygl.NewScreen[T](display, buf, board.Display.PPI())
+	btnA = machine.BUTTON_A
+	btnB = machine.BUTTON_B
+	btnC = machine.BUTTON_C
+	btnUp = machine.BUTTON_UP
+	btnDown = machine.BUTTON_DOWN
+	btnA.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	btnB.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	btnC.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	btnUp.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	btnDown.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
 
-	var (
-		white = pixel.NewColor[T](0xFF, 0xFF, 0xFF)
-		black = pixel.NewColor[T](0x00, 0x00, 0x00)
-	)
-	theme := mono.New(style.NewScale(scalePercent), screen)
-	helloText := theme.NewText("Hi")
-	canvas := gfx.NewCanvas(black, 295, 128)
+	display.ClearBuffer()
+	display.Display()
+	setCustomData()
 
-	vBox := theme.NewVBox(helloText, canvas)
+	tainigoLogo()
+	time.Sleep(3 * time.Second)
 
-	screen.SetChild(vBox)
-	screen.Update()
-
-	brickW := gfx.NewRect(white, 0, 0, 280, 10)
-	canvas.Add(brickW)
-
-	i := 0
 	for {
-		println("BEFORE", i)
-		brickW.Move(i, i+30)
-		println("AFTER", i)
-		helloText.SetText("Goodbye")
-		screen.Update()
-		display.Display()
-		time.Sleep(500 * time.Millisecond)
-		helloText.SetText("Hello")
-		screen.Update()
-		display.Display()
-		time.Sleep(500 * time.Millisecond)
-		i++
+		switch menu() {
+		case 0:
+			profile()
+			break
+		case 1:
+			schedule(0, 0)
+			break
+		case 2:
+			demo()
+			break
+		default:
+			break
+		}
+		time.Sleep(1 * time.Second)
 	}
 }
