@@ -1,19 +1,10 @@
 package main
 
-import (
-	"flag"
-	"image/color"
-	"image/png"
-	"log"
-	"os"
-
-	"fmt"
-
-	dither "github.com/makeworld-the-better-one/dither/v2"
-)
+import "golang.org/toolchain/src/fmt"
 
 func main() {
-	filepath := flag.String("filepath", "", "Fullpath of the image, only when -conf=custom")
+	fmt.Println("Keep for compatibility issues")
+	/*filepath := flag.String("filepath", "", "Fullpath of the image, only when -conf=custom")
 	flag.Parse()
 
 	if *filepath == "" {
@@ -76,5 +67,5 @@ func main() {
 
 	for b := 0; b < len(buffer); b++ {
 		fmt.Printf("0x%X,", buffer[b])
-	}
+	} */
 }

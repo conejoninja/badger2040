@@ -107,3 +107,12 @@ func setCustomData() {
 	profileImg, profileErr = base64.StdEncoding.DecodeString(ProfilePic)
 
 }
+
+type Scene struct {
+	description, optionA, optionB, optionC string
+	sceneA, sceneB, sceneC                 int
+}
+
+var sceneData = []Scene{
+	{"123456789 123456789 123456789 123456789 123456789 ", "[A] Option A of dialogue", "B- Option B of dialogue", "(C) Option C of dialogue", 0, 0, 0},
+}

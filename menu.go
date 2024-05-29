@@ -13,6 +13,7 @@ func menu() int16 {
 		"Badge",
 		"Schedule",
 		"Demo",
+		"Adventure",
 	}
 
 	display.ClearBuffer()

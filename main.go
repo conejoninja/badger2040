@@ -49,6 +49,8 @@ func main() {
 	display.Display()
 	setCustomData()
 
+	//adventure()
+
 	tainigoLogo()
 	time.Sleep(3 * time.Second)
 
@@ -62,6 +64,9 @@ func main() {
 			break
 		case 2:
 			demo()
+			break
+		case 3:
+			adventure()
 			break
 		default:
 			break
