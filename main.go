@@ -4,6 +4,7 @@ import (
 	"image/color"
 	"machine"
 	"time"
+
 	"tinygo.org/x/drivers/uc8151"
 )
 

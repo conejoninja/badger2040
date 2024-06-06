@@ -9,9 +9,22 @@ import (
 
 func adventure() {
 	quit := false
+	s := 0
 	for {
-		scene(0)
+		scene(s)
 		for {
+			if btnA.Get() {
+				s = sceneData[s].sceneA
+				break
+			}
+			if btnB.Get() {
+				s = sceneData[s].sceneB
+				break
+			}
+			if btnC.Get() {
+				s = sceneData[s].sceneC
+				break
+			}
 			time.Sleep(200 * time.Millisecond)
 
 		}
@@ -29,10 +42,10 @@ func scene(s int) {
 		tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 4, 20+i*10, ss[i], black)
 	}
 
-	showRect(0, 92, WIDTH, 36, black)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 104, sceneData[s].optionA, white)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 114, sceneData[s].optionB, white)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 124, sceneData[s].optionC, white)
+	showRect(0, 95, WIDTH, 33, black)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 2, 104, "[A] "+sceneData[s].optionA, white)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 2, 114, "[B] "+sceneData[s].optionB, white)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 2, 124, "[C] "+sceneData[s].optionC, white)
 
 	display.Display()
 	display.WaitUntilIdle()
