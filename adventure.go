@@ -46,7 +46,7 @@ func adventure() {
 				s = 30
 			} else if costume == 1 {
 				s = 28
-			} else if costume == 1 {
+			} else {
 				s = 29
 			}
 			continue
