@@ -5,6 +5,7 @@ import (
 	"math/rand"
 
 	"github.com/conejoninja/badger2040/tetris"
+	qrcode "github.com/skip2/go-qrcode"
 
 	"tinygo.org/x/tinyfont/proggy"
 
@@ -401,4 +402,29 @@ func tainigoLogo() {
 	display.DrawBuffer(0, 25, 128, 246, []uint8(tainigo))
 	display.Display()
 	display.WaitUntilIdle()
+}
+
+func QR(msg string) {
+	qr, err := qrcode.New(msg, qrcode.Medium)
+	if err != nil {
+		println(err, 123)
+	}
+
+	qrbytes := qr.Bitmap()
+	size := int16(len(qrbytes))
+
+	factor := int16(HEIGHT / len(qrbytes))
+
+	bx := (WIDTH - size*factor) / 2
+	by := (HEIGHT - size*factor) / 2
+	display.ClearBuffer()
+	for y := int16(0); y < size; y++ {
+		for x := int16(0); x < size; x++ {
+			if qrbytes[y][x] {
+				tinydraw.FilledRectangle(&display, bx+x*factor, by+y*factor, factor, factor, black)
+			} else {
+				tinydraw.FilledRectangle(&display, bx+x*factor, by+y*factor, factor, factor, white)
+			}
+		}
+	}
 }
