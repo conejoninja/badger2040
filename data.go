@@ -253,7 +253,7 @@ var sceneData = []Scene{
 		"You all arrive at the hotel and decided to take a drink at the bar. There, you encounter Mat and Natalie recording a GoTime podcast, they ask you about your unpopular opinion:",
 		"It's pronounced data, not data",
 		"Rabbits are not rodent, they are lagomorphs",
-		"--------",
+		"Cheese cake is the best dessert",
 		20, 21, 22,
 	},
 	{ // 20
@@ -271,7 +271,7 @@ var sceneData = []Scene{
 		23, 23, 23,
 	},
 	{
-		"-\"Hey wonderful listeners, we welcome " + YourName + " to our program, the gopher who states that rabbits are ... lagomorphs? Isn't that the Alien movie? That doesn't sound like an opinion but more like a fact. What do you think Natalie? I'm a bit socked myself. And with this we end our episode for today\"",
+		"-\"Hey wonderful listeners, we welcome " + YourName + " to our program, the gopher who states that the best dessert is the cheesecake. I've to say I totally agree with that. What do you think Natalie? And with this we end our episode for today\"",
 		"Time to go to bed",
 		"Time to go to bed",
 		"Time to go to bed",

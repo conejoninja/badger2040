@@ -17,7 +17,9 @@ func adventure() {
 	costume := 0
 	pancake := false
 	talk := false
+	opinion := 0
 	for {
+		println(s)
 		scene(s)
 		score += s
 		if s == 5 {
@@ -27,7 +29,16 @@ func adventure() {
 		} else if s == 6 {
 			pancake = true
 		} else if s == 8 {
+			money += 689
 			costume = 2
+		} else if s == 17 {
+			money += 5
+		} else if s == 20 {
+			opinion = 57
+		} else if s == 21 {
+			opinion = 37
+		} else if s == 22 {
+			opinion = 21
 		} else if s == 25 {
 			badgeProfile()
 		} else if s == 27 {
@@ -46,7 +57,7 @@ func adventure() {
 			}
 			continue
 		} else if s == 41 {
-			showGameStats(score, money, costume, pancake, talk)
+			showGameStats(score, money, costume, opinion, pancake, talk)
 		} else if s == 42 {
 			showGameQR()
 		} else if s == 44 {
@@ -97,7 +108,7 @@ func scene(s int) {
 
 	ss := splitBefore(sceneData[s].description)
 	for i := int16(0); i < int16(len(ss)); i++ {
-		tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 4, 20+i*10, ss[i], black)
+		tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 4, 10+i*10, ss[i], black)
 	}
 
 	showRect(0, 95, WIDTH, 33, black)
@@ -131,7 +142,7 @@ func splitBefore(str string) []string {
 	return s
 }
 
-func showGameStats(score, money, costume int, pancake, talk bool) {
+func showGameStats(score, money, costume, opinion int, pancake, talk bool) {
 
 	c := "SCORE: " + strconv.Itoa(score)
 	w32, _ := tinyfont.LineWidth(&freesans.Bold9pt7b, c)
@@ -157,6 +168,7 @@ func showGameStats(score, money, costume int, pancake, talk bool) {
 	} else {
 		tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 10, 80, "You did NOT give a talk (sad noises)", black)
 	}
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 10, 90, "Your opinion is "+strconv.Itoa(opinion)+"% popular", black)
 
 	display.Display()
 	display.WaitUntilIdle()
