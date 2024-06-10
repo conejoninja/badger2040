@@ -50,8 +50,6 @@ func main() {
 	display.Display()
 	setCustomData()
 
-	adventure()
-
 	tainigoLogo()
 	time.Sleep(3 * time.Second)
 
