@@ -11,9 +11,9 @@ import (
 func menu() int16 {
 	options := []string{
 		"Badge",
-		"Schedule",
+		"GopherCone Schedule",
+		"GopherCon Adventure",
 		"Demo",
-		"Adventure",
 	}
 
 	display.ClearBuffer()
