@@ -299,7 +299,7 @@ var sceneData = []Scene{
 		26, 26, 26,
 	},
 	{
-		"You notice there's a SCHEDULE function in your badge, you could navigate today's schedule and pick your favourite talks you wwant to attend.",
+		"You notice there's a SCHEDULE function in your badge, you could navigate today's schedule and pick your favourite talks you want to attend.",
 		"The business case for Go - Cameron Balahan",
 		"Pack Your Bytes - Diana Shevchenk",
 		"Technical documentation - Hila Fish",
