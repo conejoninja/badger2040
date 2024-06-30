@@ -147,7 +147,7 @@ func showGameStats(score, money, costume, opinion int, pancake, talk bool) {
 	c := "SCORE: " + strconv.Itoa(score)
 	w32, _ := tinyfont.LineWidth(&freesans.Bold9pt7b, c)
 	tinyfont.WriteLine(&display, &freesans.Bold9pt7b, (WIDTH-int16(w32))/2, 26, c, black)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 10, 50, "Money spent: "+strconv.Itoa(money)+" EUR", black)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 10, 50, "Money spent: "+strconv.Itoa(money)+" USD", black)
 
 	c = "YOURSELF"
 	if costume == 1 {
