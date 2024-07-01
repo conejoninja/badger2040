@@ -62,10 +62,10 @@ func main() {
 			schedule(0, 0)
 			break
 		case 2:
-			demo()
+			adventure()
 			break
 		case 3:
-			adventure()
+			demo()
 			break
 		default:
 			break
