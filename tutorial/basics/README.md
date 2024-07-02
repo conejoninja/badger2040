@@ -141,6 +141,8 @@ tinygo flash -target badger2040-w ./tutorial/basics/step5
 
 Your Badger2040, connected to a computer, will act as a mouse now. Pressing the A&C buttons will move the cursor horizontally, while up&down arrows vertically. B button will perform a left click.
 
+
+
 Good job in completing the basic tutorials. Now can check out the examples!
 
 
