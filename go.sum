@@ -1,3 +1,5 @@
+github.com/conejoninja/drivers v0.0.0-20240515082542-5f2645f5444d h1:JOrg4HB7+TovofnvS2nQA5fYPVazK5kf+NPzO/UaM8g=
+github.com/conejoninja/drivers v0.0.0-20240515082542-5f2645f5444d/go.mod h1:T6snsUqS0RAxOANxiV81fQwLxDDNmprxTAYzmxoA7J0=
 github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 h1:El6M4kTTCOh6aBiKaUGG7oYTSPP8MxqL4YI3kZKwcP4=
 github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510/go.mod h1:pupxD2MaaD3pAXIBCelhxNneeOaAeabZDe5s4K6zSpQ=
 github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e h1:MRM5ITcdelLK2j1vwZ3Je0FKVCfqOLp5zO6trqMLYs0=
@@ -12,8 +14,6 @@ golang.org/toolchain v0.0.1-go1.9rc2.windows-amd64 h1:1f9RozPx9d/MkNM8NMgJDmTj6W
 golang.org/toolchain v0.0.1-go1.9rc2.windows-amd64/go.mod h1:8wlg68NqwW7eMnI1aABk/C2pDYXj8mrMY4TyRfiLeS0=
 golang.org/x/exp v0.0.0-20230728194245-b0cb94b80691 h1:/yRP+0AN7mf5DkD3BAI6TOFnd51gEoDEb8o35jIFtgw=
 golang.org/x/exp v0.0.0-20230728194245-b0cb94b80691/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
-tinygo.org/x/drivers v0.28.0 h1:ROVrGGXddmpn2+oV/Bu3LceYbtPCJckmgIqvPcN/L0k=
-tinygo.org/x/drivers v0.28.0/go.mod h1:T6snsUqS0RAxOANxiV81fQwLxDDNmprxTAYzmxoA7J0=
 tinygo.org/x/tinydraw v0.4.0 h1:U9V0mHz8/jPShKjlh199vCfq1ARFyUOD1b+FfqIwV8c=
 tinygo.org/x/tinydraw v0.4.0/go.mod h1:WCV/EMljTv8w04iAxjv+fRD6/4ffx0afATYeJlN90Yo=
 tinygo.org/x/tinyfont v0.4.0 h1:XexPKEKiHInf6p4CMCJwsIheVPY0T46HUs6ictYyZfE=

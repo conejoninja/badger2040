@@ -5,6 +5,24 @@
     - Pimoroni Badger2040 or Pimoroni Badger2040W
     - Personal computer with Go 1.22 and TinyGo 0.32 installed, and a serial port.
 
+## Hardware differences
+
+Badger2040 & Badger2040W are a bit different. The **W** in Badger2040**W** is because it has **w**ifi capabilities. Another difference is that Badger2040 has an USB-C connection, while Badger2040W has a micro-USB.
+
+* For the badger2040 you'll need to use ```--target=badger2040``` or ```-target badger2040```
+* For the badger2040W you'll need to use ```--target=badger2040-w``` or ```-target badger2040-w```
+
+\*Note: If you are participating in the *GopherCon US TinyGo HackSession* you probably be using the **badger2040w**.
+
+Front side
+
+![Hardware front](./assets/comparision1.jpg)
+
+Back side
+
+![Hardware back](./assets/comparision2.jpg)
+
+
 ## Installation
 
 ### Go
@@ -48,7 +66,7 @@ This tests that you can compile and flash your Badger2040 with TinyGo code, by b
 
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step0
+tinygo flash -target badger2040-w ./tutorial/basics/step0
 ```
 
 Once the Badger2040 is flashed correctly, the built-in LED (on the back) should start to turn on and off once per second. Now everything is setup correctly and you are ready to continue.
@@ -61,7 +79,7 @@ Once the Badger2040 is flashed correctly, the built-in LED (on the back) should 
 Run the code.
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step1
+tinygo flash -target badger2040-w ./tutorial/basics/step1
 ```
 
 When you press the A button, the built-in LED on the back should turn on.
@@ -76,7 +94,7 @@ the _B_ button is pressed instead of the _A_ button.
 Run the code.
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step2/
+tinygo flash -target badger2040-w ./tutorial/basics/step2/
 ```
 
 The message "Hello Gophers!" should appear on the display.
@@ -90,7 +108,7 @@ The message "Hello Gophers!" should appear on the display.
 Run the code.
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step3/
+tinygo flash -target badger2040-w ./tutorial/basics/step3/
 ```
 
 ![step5](./assets/step3.jpg)
@@ -105,7 +123,7 @@ When a button is pressed a ring will be shown around its corresponding circle.
 Run the code.
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step4
+tinygo flash -target badger2040-w ./tutorial/basics/step4
 ```
 
 Go to any online midi player with USB capabilities, like [VirtualPiano.eu](https://virtualpiano.eu/). Make sure the Badger2040 MIDI is enabled (this website works better in Chrome, other browsers might not detect the Badger2040 as a MIDI device). It should identify itself as _"Badger Drum"_.
@@ -118,7 +136,7 @@ Press the buttons and create your melody.
 Run the code.
 
 ```
-tinygo flash -target badger2040 ./tutorial/basics/step5
+tinygo flash -target badger2040-w ./tutorial/basics/step5
 ```
 
 Your Badger2040, connected to a computer, will act as a mouse now. Pressing the A&C buttons will move the cursor horizontally, while up&down arrows vertically. B button will perform a left click.
