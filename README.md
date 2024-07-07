@@ -17,3 +17,7 @@ on the board, and the `reset` button (both are located in the back of the badge)
 for 5 seconds, then release the `reset` button first while still holding the
 boot for another 5 seconds to reset the device and allow tinygo to flash the
 device.
+
+The device might disconnect after being flashed, you need to reset it each time
+before flashing it (e.g., for each step of the activity).
+
