@@ -21,3 +21,21 @@ device.
 The device might disconnect after being flashed, you need to reset it each time
 before flashing it (e.g., for each step of the activity).
 
+If the problem persists, try holding `BOOTSEL` while connecting the USB cable
+to your computer. This puts the device in [USB mass storage device mode](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3).
+
+```console
+$ fdisk -l
+...
+Device     Boot Start    End Sectors  Size Id Type
+/dev/sdb1           1 262143  262143  128M  e W95 FAT16 (LBA)
+```
+
+Make note of the device path, which may be different on your system (e.g. `/dev/sda1`).
+
+On Linux, ensure that the device is mounted with a volume name of `RPI-RP2`:
+
+```console
+$ mkdir /media/RPI-RP2
+$ mount /dev/sdb1 /media/RPI-RP2
+```
