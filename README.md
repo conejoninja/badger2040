@@ -1,5 +1,9 @@
 # badger2040
 
+## Getting Started
+
+Go to the [tutorial](./tutorial/basics) and follow instructions.
+
 ## Troubleshooting
 
 ### Unable to locate any volume
