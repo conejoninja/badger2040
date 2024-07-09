@@ -1,10 +1,23 @@
 package main
 
-import "golang.org/toolchain/src/fmt"
+import (
+	"flag"
+	"image/color"
+	"image/png"
+	"log"
+	"os"
+
+	"encoding/base64"
+
+	"fmt"
+
+	dither "github.com/makeworld-the-better-one/dither/v2"
+)
 
 func main() {
-	fmt.Println("Keep for compatibility issues")
-	/*filepath := flag.String("filepath", "", "Fullpath of the image, only when -conf=custom")
+	filepath := flag.String("filepath", "", "Fullpath of the image")
+	noDither := flag.Bool("nodither", false, "To avoid dithering the image")
+	showImage := flag.Bool("showimage", false, "Display the image")
 	flag.Parse()
 
 	if *filepath == "" {
@@ -18,28 +31,29 @@ func main() {
 		log.Fatal("failed to decode image file", err)
 	}
 
-	palette := []color.Color{
-		color.Black,
-		color.White,
-		// You can put any colors you want
-	}
+	if !*noDither {
+		palette := []color.Color{
+			color.Black,
+			color.White,
+		}
 
-	// Create ditherer
-	d := dither.NewDitherer(palette)
-	d.Matrix = dither.FloydSteinberg
+		// Create ditherer
+		d := dither.NewDitherer(palette)
+		d.Matrix = dither.FloydSteinberg
 
-	// Dither the image, attempting to modify the existing image
-	// If it can't then a dithered copy will be returned.
-	img = d.Dither(img)
+		// Dither the image, attempting to modify the existing image
+		// If it can't then a dithered copy will be returned.
+		img = d.Dither(img)
 
-	f2, err := os.Create("dither.png")
-	if err != nil {
-		panic(err)
-	}
+		f2, err := os.Create("dither.png")
+		if err != nil {
+			panic(err)
+		}
 
-	err = png.Encode(f2, img)
-	if err != nil {
-		panic(err)
+		err = png.Encode(f2, img)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	buffer := make([]uint8, int(img.Bounds().Max.Y)*int(img.Bounds().Max.X)/8)
@@ -52,20 +66,34 @@ func main() {
 				r, g, b, _ := img.At(img.Bounds().Max.X-x-1, (y*8)+int(i)).RGBA()
 				if r == 0 && g == 0 && b == 0 {
 					buf |= 1 << (7 - i)
-					fmt.Print("*")
-					//} else {
-					//	b &^= 1 << i % 8
+					if *showImage {
+						fmt.Print("*")
+					}
 				} else {
-					fmt.Print("_")
+					if *showImage {
+						fmt.Print(" ")
+					}
 				}
 			}
 			buffer[bbb] = buf
 			bbb++
 		}
-		fmt.Println("")
+		if *showImage {
+			fmt.Println("")
+		}
 	}
 
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+	fmt.Println("Use this if you plan to use an array directly in the code")
 	for b := 0; b < len(buffer); b++ {
 		fmt.Printf("0x%X,", buffer[b])
-	} */
+	}
+
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+	fmt.Println("Use this for the ldflags main.ProfilePic")
+	fmt.Println(base64.StdEncoding.EncodeToString(buffer))
 }
