@@ -150,7 +150,7 @@ type Scene struct {
 
 var sceneData = []Scene{
 	{
-		"As usually, you are reading Golang Weekly, among very useful information you notice the CFP for GopherCon US is open! It will be in Chicago, 7-10th July. What do you want to do?",
+		"As usually, you are reading Golang Weekly, among very useful information you notice the CFP for GopherCon AU is open! It will be in Sydney, 6-8th November. What do you want to do?",
 		"Oh no! you don't have any idea for a talk.",
 		"Let's talk about AI, it's the new pink!",
 		"You already have the slides for a TinyGo talk.",
@@ -158,17 +158,17 @@ var sceneData = []Scene{
 	},
 	{
 		"It's ok, you still take advantage of the date and got an early-bird ticket at a discounted price:",
-		"Self-payin gopher (385$)",
-		"Corporate gopher (600$)",
-		"Premium gopher + workshops (1050$)",
+		"Self-payin gopher (A$385)",
+		"Corporate gopher (A$500)",
+		"Premium gopher + workshops (A$850)",
 		4, 4, 4,
 	},
 	{
 		"You worked hard on your slides and send your abstract in time. A few days passed and received the bad news that your talk wasn't accepted, " +
 			"nobody is interested anymore in AI. But they offer you a discount price for the tickets:",
-		"Self-payin gopher (335$)",
-		"Corporate gopher (550$)",
-		"Premium gopher + workshops (970$)",
+		"Self-payin gopher (A$335)",
+		"Corporate gopher (A$450)",
+		"Premium gopher + workshops (A$770)",
 		4, 4, 4,
 	},
 	{
@@ -179,7 +179,7 @@ var sceneData = []Scene{
 		4, 4, 4,
 	},
 	{
-		"BEEP BEEP BEEP. It's your alarm clock. Today is the day, your need to prepare and go to the airport, Chicago and a bunch of gophers are waiting for you.",
+		"BEEP BEEP BEEP. It's your alarm clock. Today is the day, your need to prepare and go to the airport, Sydney and a bunch of gophers are waiting for you.",
 		"Take a taxi to the airport. No time to waste!",
 		"Have Liam's signature pancakes.",
 		"Sleep a bit more",
@@ -235,32 +235,32 @@ var sceneData = []Scene{
 		12, 12, 12,
 	},
 	{
-		"The plane finally landed. You check in the hotel and have a few hours left to visit the city. Chicago is famous for:",
-		"Deep dish pizza is a matter of pride for Chicagoans",
-		"You know the lyrics of all Blues Brothers' songs",
-		"The Millenium Park is a must",
+		"The plane finally landed. You check in the hotel and have a few hours left to visit the city. Sydney is famous for:",
+		"Those delicious Sydney rock oysters",
+		"You know the lyrics of all AC/DC' songs",
+		"The Sydney opera house",
 		13, 14, 15,
 	},
 	{
-		"You ask the concierge at the hotel about the best deep dish pizza in the city and go there. You make a mess of yourself, but it was delicious. When you start leaving the place, a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
+		"You ask the concierge at the hotel about the best Sydney rock oysters in the city and go there. You make a mess of yourself, but it was delicious. When you start leaving the place, a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
 		"You run as fast as you can",
 		"Try to ignore him",
-		"Give him 5USD & proceed to listen to him",
+		"Give him 5AUD & proceed to listen to him",
 		16, 16, 17,
 	},
 	{
-		"Unfortunately there is no Blues Brothers concert today so you decide to go for a walk around the city to make time. When walking through a dark alley a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
+		"Unfortunately there is no AC/CD concert today so you decide to go for a walk around the city to make time. When walking through a dark alley a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
 		"You run as fast as you can",
 		"Try to ignore him",
-		"Give him 5USD & proceed to listen to him",
+		"Give him 5AUD & proceed to listen to him",
 
 		16, 16, 17,
 	},
 	{ // 15
-		"You visit the Millenium Park, it's amazing. While walking back to the hotel, you go through a dark alley and a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
+		"You visit the opera house, it's amazing. While walking back to the hotel, you go through a dark alley and a weird looking person, too clean to be a bum, but with crazy person vibes and a tinfoil hat approaches. He tries to stop you.",
 		"You run as fast as you can",
 		"Try to ignore him",
-		"Give him 5USD & proceed to listen to him",
+		"Give him 5AUD & proceed to listen to him",
 		16, 16, 17,
 	},
 	{
@@ -315,12 +315,12 @@ var sceneData = []Scene{
 	{
 		"After a long day, you arrive to your room, your bed for the next days is waiting for you. You close your eyes. Looks like it's just a second, but wake up fully rested and ready for the first day of GopherCon. You skip breakfast because I'm too tired of adding options.",
 		"-----",
-		"Go to McCormick Place Convention",
-		" Center (event location)",
+		"Go to Seymour Centre",
+		"(event location)",
 		24, 24, 24,
 	},
 	{
-		"You arrive at the door. A familiar face greets you, it's the wonderful Heather. You pick up your new TinyGo powered e-ink badge and look at it.",
+		"You arrive at the door. A familiar face greets you, it's the wonderful Dave Cheney. You pick up your new TinyGo powered e-ink badge and look at it.",
 		"-----",
 		"Look at your badge",
 		"-----",
@@ -335,9 +335,9 @@ var sceneData = []Scene{
 	},
 	{
 		"You notice there's a SCHEDULE function in your badge, you could navigate today's schedule and pick your favourite talks you want to attend.",
-		"Glamorous habit tracker - Donia Chaiehloudj",
-		"Saving african wildlife - Marvin Hosea",
-		"Prototyping a microservice - Sadie Freeman",
+		"Flight, FORTRAN, Control and Go - Patricio Whittingslow",
+		"Overview of Gomobile and Its Use Cases - Marvin Hosea",
+		"WASM on Edge Serverless - Kay Sawada",
 		27, 27, 27,
 	},
 	{ // left empty, redirect to proper scene according the clothes.
