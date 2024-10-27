@@ -7,6 +7,7 @@ import (
 	"github.com/conejoninja/badger2040/tetris"
 	qrcode "github.com/skip2/go-qrcode"
 
+	"tinygo.org/x/drivers/pixel"
 	"tinygo.org/x/tinyfont/proggy"
 
 	"tinygo.org/x/tinyfont/freesans"
@@ -52,7 +53,10 @@ func badgeProfile() {
 	display.ClearBuffer()
 	midW := int16(176)
 	if profileErr == nil {
-		display.DrawBuffer(0, 0, 128, 120, []uint8(profileImg))
+		img := pixel.NewImageFromBytes[pixel.Monochrome](128, 128, []byte(profileImg))
+		if err := display.DrawBitmap(168, 0, img); err != nil {
+			println(err)
+		}
 	}
 
 	showRect(0, 0, midW, 30, black)
@@ -399,7 +403,12 @@ func dvd(text string) {
 
 func tainigoLogo() {
 	display.ClearBuffer()
-	display.DrawBuffer(0, 25, 128, 246, []uint8(tainigo))
+
+	img := pixel.NewImageFromBytes[pixel.Monochrome](246, 128, []byte(tainigo))
+	if err := display.DrawBitmap(32, 0, img); err != nil {
+		println(err)
+	}
+
 	display.Display()
 	display.WaitUntilIdle()
 }
