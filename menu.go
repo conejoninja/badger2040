@@ -30,8 +30,8 @@ func menu() int16 {
 	}
 	tinydraw.FilledCircle(&display, 20, 38, 4, black)
 
-	img := pixel.NewImageFromBytes[pixel.Monochrome](128, 128, []byte(profileImg))
-	if err := display.DrawBitmap(168, 0, img); err != nil {
+	img := pixel.NewImageFromBytes[pixel.Monochrome](112, 96, []byte(logochip))
+	if err := display.DrawBitmap(168, 24, img); err != nil {
 		println(err)
 	}
 
