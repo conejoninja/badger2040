@@ -3,6 +3,7 @@ package main
 import (
 	"time"
 
+	"tinygo.org/x/drivers/pixel"
 	"tinygo.org/x/tinydraw"
 	"tinygo.org/x/tinyfont"
 	"tinygo.org/x/tinyfont/proggy"
@@ -28,7 +29,11 @@ func menu() int16 {
 		tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 28, 40+12*i, options[i], black)
 	}
 	tinydraw.FilledCircle(&display, 20, 38, 4, black)
-	display.DrawBuffer(24, 8, 96, 112, []uint8(logochip))
+
+	img := pixel.NewImageFromBytes[pixel.Monochrome](112, 96, []byte(logochip))
+	if err := display.DrawBitmap(168, 24, img); err != nil {
+		println(err)
+	}
 
 	display.Display()
 	display.WaitUntilIdle()

@@ -1,11 +1,14 @@
 package main
 
 import (
-	"gotchi/assets"
+	//"gotchi/assets"
 	"machine"
 	"time"
 
+	"tinygo.org/x/drivers/pixel"
 	"tinygo.org/x/drivers/uc8151"
+
+	"github.com/conejoninja/badger2040/examples/blinking/assets"
 )
 
 func main() {
@@ -34,7 +37,8 @@ func main() {
 	var current int
 
 	for {
-		display.DrawBuffer(0, 0, 64, 64, []uint8(animation[current]))
+		img := pixel.NewImageFromBytes[pixel.Monochrome](64, 64, []byte(animation[current]))
+		display.DrawBitmap(0, 0, img)
 
 		display.Display()
 		display.WaitUntilIdle()
