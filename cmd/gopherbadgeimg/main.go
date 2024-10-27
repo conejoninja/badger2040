@@ -85,13 +85,6 @@ func main() {
 			// For the sake of consistency, we return after toplevel os.Exit calls as well
 			return
 		}
-		// must use a y value divisble by 8 as we write the bits one byte at a time
-		if y%8 != 0 {
-			log.Println("error: height/y value must be divisible by 8")
-			os.Exit(1)
-			return
-		}
-
 	}
 	imgBits = ImgToBytes(x, y, sourceImage)
 	switch outMode {
