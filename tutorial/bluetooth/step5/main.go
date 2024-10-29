@@ -1,17 +1,20 @@
 package main
 
 import (
-	"strconv"
-
 	"tinygo.org/x/bluetooth"
 )
 
 var DeviceAddress string
 
-var adapter = bluetooth.DefaultAdapter
+var (
+	adapter = bluetooth.DefaultAdapter
+
+	heartRateServiceUUID        = bluetooth.ServiceUUIDHeartRate
+	heartRateCharacteristicUUID = bluetooth.CharacteristicUUIDHeartRateMeasurement
+)
 
 func main() {
-	println("enable interface...")
+	println("enabling")
 
 	// Enable BLE interface.
 	must("enable BLE stack", adapter.Enable())
@@ -27,6 +30,7 @@ func main() {
 			ch <- result
 		}
 	})
+	must("start scanning", err)
 
 	var device bluetooth.Device
 	select {
@@ -42,43 +46,34 @@ func main() {
 
 	// get services
 	println("discovering services/characteristics")
-	srvcs, err := device.DiscoverServices(nil)
+	srvcs, err := device.DiscoverServices([]bluetooth.UUID{heartRateServiceUUID})
 	must("discover services", err)
 
-	// buffer to retrieve characteristic data
-	buf := make([]byte, 255)
-
-	for _, srvc := range srvcs {
-		println("- service", srvc.UUID().String())
-
-		chars, err := srvc.DiscoverCharacteristics(nil)
-		if err != nil {
-			println(err)
-		}
-		for _, char := range chars {
-			println("-- characteristic", char.UUID().String())
-			mtu, err := char.GetMTU()
-			if err != nil {
-				println("    mtu: error:", err.Error())
-			} else {
-				println("    mtu:", mtu)
-			}
-			n, err := char.Read(buf)
-			if err != nil {
-				println("    ", err.Error())
-			} else {
-				println("    data bytes", strconv.Itoa(n))
-				println("    value =", string(buf[:n]))
-			}
-		}
+	if len(srvcs) == 0 {
+		panic("could not find heart rate service")
 	}
 
-	err = device.Disconnect()
+	srvc := srvcs[0]
+
+	println("found service", srvc.UUID().String())
+
+	chars, err := srvc.DiscoverCharacteristics([]bluetooth.UUID{heartRateCharacteristicUUID})
 	if err != nil {
 		println(err)
 	}
 
-	println("done")
+	if len(chars) == 0 {
+		panic("could not find heart rate characteristic")
+	}
+
+	char := chars[0]
+	println("found characteristic", char.UUID().String())
+
+	char.EnableNotifications(func(buf []byte) {
+		println("data:", uint8(buf[1]))
+	})
+
+	select {}
 }
 
 func must(action string, err error) {

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"time"
 
 	"tinygo.org/x/bluetooth"
@@ -14,7 +13,6 @@ import (
 var (
 	terminal *tinyterm.Terminal
 
-	black   = color.RGBA{0, 0, 0, 255}
 	adapter = bluetooth.DefaultAdapter
 )
 
