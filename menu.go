@@ -12,7 +12,7 @@ import (
 func menu() int16 {
 	options := []string{
 		"Badge",
-		"GopherCone Schedule",
+		"GopherCon Schedule",
 		"GopherCon Adventure",
 		"Demo",
 	}
@@ -20,7 +20,7 @@ func menu() int16 {
 	display.ClearBuffer()
 
 	showRect(0, 0, WIDTH, 16, black)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 12, "MENU - GOPHERCON.EU", white)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 12, "MENU - GOPHERCON.COM.AU", white)
 
 	selected := int16(0)
 	numOpts := int16(len(options))
