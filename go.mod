@@ -5,10 +5,10 @@ go 1.22
 require (
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	tinygo.org/x/bluetooth v0.10.1-0.20241028090929-d75dcc7878b1
-	tinygo.org/x/drivers v0.28.1-0.20241028055853-0186d0905dcc
+	tinygo.org/x/drivers v0.29.0
 	tinygo.org/x/tinydraw v0.4.0
-	tinygo.org/x/tinyfont v0.4.0
-	tinygo.org/x/tinyterm v0.3.1-0.20241028084705-e36d93d72cca
+	tinygo.org/x/tinyfont v0.5.0
+	tinygo.org/x/tinyterm v0.4.0
 )
 
 require (
