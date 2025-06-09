@@ -20,7 +20,7 @@ func menu() int16 {
 	display.ClearBuffer()
 
 	showRect(0, 0, WIDTH, 16, black)
-	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 12, "MENU - GOPHERCON.COM.AU", white)
+	tinyfont.WriteLine(&display, &proggy.TinySZ8pt7b, 6, 12, "MENU", white)
 
 	selected := int16(0)
 	numOpts := int16(len(options))
