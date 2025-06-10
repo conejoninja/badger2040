@@ -66,8 +66,8 @@ func main() {
 	var x, y int
 	switch ratio {
 	case "profile":
-		// profile image is 128x128
-		x, y = 128, 128
+		// profile image is 120x128
+		x, y = 120, 128
 	case "splash":
 		// splash image is 246x128
 		x, y = 246, 128

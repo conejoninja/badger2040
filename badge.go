@@ -53,8 +53,8 @@ func badgeProfile() {
 	display.ClearBuffer()
 	midW := int16(176)
 	if profileErr == nil {
-		img := pixel.NewImageFromBytes[pixel.Monochrome](128, 128, []byte(profileImg))
-		if err := display.DrawBitmap(168, 0, img); err != nil {
+		img := pixel.NewImageFromBytes[pixel.Monochrome](120, 128, []byte(profileImg))
+		if err := display.DrawBitmap(176, 0, img); err != nil {
 			println(err)
 		}
 	}
